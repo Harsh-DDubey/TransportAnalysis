@@ -8,7 +8,7 @@
                                         Ohoye! Welcome to My profile 
                                         By the way my self Harsh-DDubey
                                         Hailing from India 🇮🇳
-         I have recently completed my project of Class XII Transportation Management So here is the source code of it it was nice learning tkinter during the project and definitely a memorable journey
+
 ```
 
 ## Languages
