@@ -1004,14 +1004,14 @@ if choice == 1:
                                         gorakhdham_mumbaidelhi_seatac2.append(gorakhdham_mumbaidelhi_ac2_seattoberemoved)
                                         details_ndlstejasraj_mumbaidelhi()
                                         print('SEAT NUMBER',gorakhdham_mumbaidelhi_ac2_seattoberemoved,'HAS BEEN SUCESSFULL CANCELED')
-                                        cost_booking_ndlstejasraj_ac2=cost_booking_ndlstejasraj_ac2-4245
+                                        cost_booking_ndlstejas_ac2=cost_booking_ndlstejas_ac2-4245
                                     else:
                                         print('invalid')
                                 else:
                                     print('INVALID')
                                     break
                                 furtheroption()
-                            print('TOTAL COST OF BOOKING Rs',cost_booking_ndlstejasraj_ac2)
+                            print('TOTAL COST OF BOOKING Rs',cost_booking_ndlstejas_ac2)
                                     
                         elif clas=='AC3':
                                 gorakhdham_mumbaidelhi_ac3_book()
@@ -1031,14 +1031,14 @@ if choice == 1:
                                             gorakhdham_mumbaidelhi_seatac3.append(gorakhdham_mumbaidelhi_ac3_seattoberemoved)
                                             details_ndlstejasraj_mumbaidelhi()
                                             print('SEAT NUMBER',gorakhdham_mumbaidelhi_ac3_seattoberemoved,'HAS BEEN SUCESSFULL CANCELED')
-                                            cost_booking_ndlstejasraj_ac3=cost_booking_ndlstejas_ac3-3085
+                                            cost_booking_ndlstejas_ac3=cost_booking_ndlstejas_ac3-3085
                                         else:
                                             print('invalid')
                                     else:
                                         print('INVALID')
                                         break
                                     furtheroption()
-                                print('TOTAL COST OF BOOKING Rs',cost_booking_ndlstejasraj_ac3)
+                                print('TOTAL COST OF BOOKING Rs',cost_booking_ndlstejas_ac3)
                         else:
                             pass               
                 else :
@@ -1068,11 +1068,26 @@ if choice == 1:
             bookinginitial()
             create_railways_table(cursor)
             if (stlo=="GORAKHPUR" and enlo=="NEW DELHI") or (stlo=="NEW DELHI" and enlo=="GORAKHPUR"):
-                add_railuser(username,"Railways",DisGkpdel,clas,1000)
+                if clas=='AC2':
+                    add_railuser(username,"Railways",DisGkpdel,clas,cost_booking_gorakhdham_ac2)
+                elif clas=='AC3':
+                    add_railuser(username,"Railways",DisGkpdel,clas,cost_booking_gorakhdham_ac3)                   
             if (stlo=="MUMBAI" and enlo=="GORAKHPUR" and stlo=="GORAKHPUR" or enlo=="MUMBAI"):
-                add_railuser(username,"Railways",DisGkpmum,clas,1000)
-            if (enlo=="MUMBAI" and stlo=="NEW DELHI") or (stlo=="MUMBAI" or enlo=="NEW DELHI"):
-                add_railuser(username,"Railways",DisMumdel,clas,1000)
+                if clas=='AC2':
+                    add_railuser(username,"Railways",DisGkpmum,clas,cost_booking_gkplttsf_ac2)
+                elif clas=='AC3':
+                    add_railuser(username,"Railways",DisGkpmum,clas,cost_booking_gkplttsf_ac3)
+            if (enlo=="MUMBAI" and stlo=="NEW DELHI"):
+                if clas=='AC2':
+                    add_railuser(username,"Railways",DisDelmum,clas,cost_booking_mmcttejas_ac2)
+                elif clas=='AC3':
+                    add_railuser(username,"Railways",DisDelmum,clas,cost_booking_mmcttejas_ac3)
+            else(stlo=='MUMBAI' and enlo=='NEW DELHI'):
+                if clas=='AC2':
+                    add_railuser(username,"Railways",DisMumdel,clas,cost_booking_ndlstejas_ac2)
+                elif clas=='AC3':
+                    add_railuser(username,"Railways",DisMumdel,clas,cost_booking_ndlstejas_ac3)
+               
         if Mode=="Bus":
             def distane():                              #calculate distance between the source and final location
                 lo1=str(input('Starting Location='))
