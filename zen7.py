@@ -920,18 +920,18 @@ if choice == 1:
                     gkpmumbaitrains(stlo)
                 else:
                     print('invalid')
-            name=username_entry.get().strip() 
-            TravellingMode=Mode
-            JourneyCost=1000
-            add_personal_data(name,TravellingMode,JourneyCost)
-            print("If you want to see your total bookings Enter Show")
-            wish=input("Enter data")
-            if wish=="Show":
-                print_whole_personaltable(cursor)
-            else:
-                print("Thank you for registering")
+            
+            
+    
             #MAIN PROGRAM
             bookinginitial()
+            create_railways_table(cursor)
+            if (stlo=="GORAKHPUR" and enlo=="NEW DELHI") or (stlo=="NEW DELHI" and enlo=="GORAKHPUR"):
+                add_railuser(username,"Railways",DisGkpdel,clas,1000)
+            if (stlo=="MUMBAI" and enlo=="GORAKHPUR" and stlo=="GORAKHPUR" or enlo=="MUMBAI"):
+                add_railuser(username,"Railways",DisGkpmum,clas,1000)
+            if (enlo=="MUMBAI" and stlo=="NEW DELHI") or (stlo=="MUMBAI" or enlo=="NEW DELHI"):
+                add_railuser(username,"Railways",DisMumdel,clas,1000)
         if Mode=="Bus":
             def distane():                              #calculate distance between the source and final location
                 lo1=str(input('Starting Location='))
