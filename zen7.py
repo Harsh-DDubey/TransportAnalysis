@@ -904,8 +904,8 @@ if choice == 1:
                 global nopassenger
                 global cost_booking_mmcttejas_ac3
                 global cost_booking_mmcttejas_ac2
-                global cost_booking_ndlstejasraj_ac2
-                global cost_booking_ndlstejasraj_ac3
+                global cost_booking_ndlstejas_ac2
+                global cost_booking_ndlstejas_ac3
                 global clas
                 if stlo=='NEW DELHI':
                     details_mmcttejasraj_delhimumbai()
