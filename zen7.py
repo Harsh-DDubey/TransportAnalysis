@@ -228,16 +228,27 @@ if choice == 1:
                   pass
                 global stlo
                 stlo=str(input("Enter Source Station="))
+                while stlo not in ['NEW DELHI','MUMBAI','GORAKHPUR']:
+                    print('INVALID DATA')
+                    stlo=str(input("Enter Source Station="))
                 global enlo
                 enlo=str(input("Enter end station="))
+                while enlo not in ['NEW DELHI','MUMBAI','GORAKHPUR']:
+                    print('INVALID DATA')
+                    enlo=str(input("Enter Source Station="))
                 global clas
                 clas=str(input("Enter class(eg AC2 for AC second tier)"))
                 global stdate
                 STDATE=str(input('ENTER DATE FOR BOOKING(USE FORMAT YYYY-MM-DD)'))
                 stdate=date.fromisoformat(STDATE)
+                while stdate<date.today():
+                    print('INVALID DATE')
+                    STDATE=str(input('ENTER DATE FOR BOOKING(USE FORMAT YYYY-MM-DD)'))
+                    stdate=date.fromisoformat(STDATE)
+                
                 global nopassenger
                 nopassenger=int(input("NO OF PASSENGERS"))
-
+            
             #CHECK FOR BOOKING
             def furtheroption():   
                 print('press 1 to continue booking further')
@@ -245,7 +256,7 @@ if choice == 1:
                 print('press 3 to exit booking')
                 global option
                 option=int(input('NUMBER='))
-
+            
             #FUNCTION USED TO BOOK TICKETS
             #TOTAL SEATS IN AC2 TIER IN GORAKHDAHM GKP->DELHI
             gorakhdham_gkpdelhi_seatac2=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
@@ -271,7 +282,7 @@ if choice == 1:
             gorakhdham_mumbaidelhi_seatac2=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
             #TOTAL SEATS IN AC3 TIER NDLS  TEJAS RAJ MUMBAI->DELHI
             gorakhdham_mumbaidelhi_seatac3=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
-
+                   
             #LISTS OF BOOKED SEATS ACCORDING TO TRAIN AND TIER
             gorakhdham_gkpdelhi_seatac2_bookedseat=[]
             gorakhdham_gkpdelhi_seatac3_bookedseat=[]
@@ -284,238 +295,316 @@ if choice == 1:
             gorakhdham_delhimumbai_seatac2_bookedseat=[]
             gorakhdham_delhimumbai_seatac3_bookedseat=[]
             gorakhdham_mumbaidelhi_seatac2_bookedseat=[]
-            gorakhdham_mumbaidelhi_seatac3_bookedseat=[]
-
-
-
+            gorakhdham_mumbaidelhi_seatac3_bookedseat=[]          
+            
             #FUNCTION TO PRINT DETAILS ON TICKET
-
+            
             #GORAKHDHAM TRAIN GKP->DELHI
             def details_gorakhdham_gkpdelhi():
                 teem=timedelta(days=1)
+                print()
+                print()
                 print(datetime.today())
                 print('||--->GORAKHDHAM EXP<---||')
                 print('FROM GORAKHPUR JN ---->TO NEW DELHI')
                 print('DEPARTURE ',stdate,'16:35-----ARRIVAL',(stdate+teem),' 05:15')
                 print('JOURNEY DURATION--12HRS 40MIN')
                 print('FREQUENCY-----EVERYDAY')
+                print('AC2 TICKET COST PER HEAD-Rs.1645',end='/n'
+                      'AC3 TICKET COST PER HEAD-Rs.1165')
                 print()
-
+                print()
+            
             #GORAKHDHAM TRAIN DELHI->GKP
             def details_gorakhdham_delhigkp():
                 teem=timedelta(days=1)
+                print()
+                print()
                 print(datetime.today())
                 print('||--->GORAKHDHAM EXP<---||')
                 print('FROM NEW DELHI ---->TO GORAKHPUR JN')
                 print('DEPARTURE',stdate,' 21:25-----ARRIVAL',(stdate+teem),' 09:45')
                 print('JOURNEY DURATION--12HRS 20MIN')
                 print('FREQUENCY-----EVERYDAY')
+                print('AC2 TICKET COST PER HEAD-Rs.1645'
+                      'AC3 TICKET COST PER HEAD-Rs.1165')
                 print()
-
+                print()
+            
             #GKP LTT SF TRAIN GKP->MUMBAI
             def details_gkpltt_gkpmumbai():
                 teem=timedelta(days=2)
+                print()
+                print()
                 print(datetime.today())
                 print('||--->GKP LTT SF EXP<---||')
                 print('FROM GORAKHPUR JN ---->TO LOKMANYATILAK T')
                 print('DEPARTURE',stdate,' 22:30-----ARRIVAL',(stdate+teem),' 04:35')
                 print('JOURNEY DURATION--30HRS 05MIN')
                 print('FREQUENCY-----EVERYDAY')
+                print('AC2 TICKET COST PER HEAD-Rs.2645',end='/n'
+                      'AC3 TICKET COST PER HEAD-Rs.1840')
                 print()
-
+                print()
             #GKP LTT SF TRAIN MUMBAI->GKP
             def details_gkpltt_mumbaigkp():
                 teem=timedelta(days=2)
+                print()
+                print()
                 print(datetime.today())
                 print('||--->GKP LTT SF EXP<---||')
                 print('FROM LOKMANYATILAK T ---->TO GORAKHPUR JN')
                 print('DEPARTURE',stdate,' 05:23-----ARRIVAL',(stdate+teem),' 11:45')
                 print('JOURNEY DURATION--30HRS 22MIN')
                 print('FREQUENCY-----EVERYDAY')
+                print('AC2 TICKET COST PER HEAD-Rs.2645',end='/n'
+                      'AC3 TICKET COST PER HEAD-Rs.1840')
                 print()
-
+                print()
+            
             #MMCT TEJAS RAJ TRAIN DELHI->MUMBAI
             def details_mmcttejasraj_delhimumbai():
                 teem=timedelta(days=1)
+                print()
+                print()
                 print(datetime.today())
                 print('||--->MMCT TEJAS RAJ<---||')
                 print('FROM NEW DELHI ---->TO LOKMANYATILAK T')
                 print('DEPARTURE',stdate,' 16:55-----ARRIVAL',(stdate+teem),' 08:35')
                 print('JOURNEY DURATION--15HRS 40MIN')
                 print('FREQUENCY-----EVERYDAY')
+                print('AC2 TICKET COST PER HEAD-Rs.4245',end='/n'
+                      'AC3 TICKET COST PER HEAD-Rs.3085')
                 print()
-
+                print()
+            
             #NDLS TEJAS RAJ TRAIN MUMBAI->DELHI
             def details_ndlstejasraj_mumbaidelhi():
                 teem=timedelta(days=1)
+                print()
+                print()
                 print(datetime.today())
                 print('||--->NDLS TEJAS RAJ<---||')
                 print('FROM MUMBAI CENTRAL ---->TO NEW DELHI')
                 print('DEPARTURE',stdate,' 17:00-----ARRIVAL',(stdate+teem),' 08:32')
                 print('JOURNEY DURATION--15HRS 32MIN')
                 print('FREQUENCY-----EVERYDAY')
-                print()     
-    
+                print('AC2 TICKET COST PER HEAD-Rs.4245',end='/n'
+                      'AC3 TICKET COST PER HEAD-Rs.3085')
+                print()
+                print()
+            # BOOKING COST
+            cost_booking_gorakhdham_ac2=0
+            cost_booking_gorakhdham_ac3=0
+            cost_booking_gkplttsf_ac2=0
+            cost_booking_gkplttsf_ac3=0
+            cost_booking_mmcttejas_ac2=0
+            cost_booking_mmcttejas_ac3=0
+            cost_booking_ndlstejas_ac2=0
+            cost_booking_ndlstejas_ac3=0
             #FUNCTION TO INITIATE BOOKING GORAKHDHAM GKP->DELHI AC2
             def gorakhdham_gkpdelhi_ac2_book():
-               global gorakhdham_gkpdelhi_ac2_bookedseat
-               print('booking ticket')
-               i=1
-               while i<=nopassenger:
+                global gorakhdham_gkpdelhi_ac2_bookedseat
+                print('booking ticket')
+                i=1
+                global cost_booking_gorakhdham_ac2
+                
+                while i<=nopassenger:
                     gorakhdham_gkpdelhi_ac2_seattobebooked=gorakhdham_gkpdelhi_seatac2.pop()
                     gorakhdham_gkpdelhi_seatac2_bookedseat.append(gorakhdham_gkpdelhi_ac2_seattobebooked)
+                    cost_booking_gorakhdham_ac2=cost_booking_gorakhdham_ac2+1645
                     details_gorakhdham_gkpdelhi()
                     print('SEAT NUMBER',gorakhdham_gkpdelhi_ac2_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC2 TIER')
-                    print()
+                    print()      
                     i=i+1
-
+                
             #FUNCTION TO INITIATE BOOKING GORAKHDHAM GKP->DELHI AC3
             def gorakhdham_gkpdelhi_ac3_book():
                 global gorakhdham_gkpdelhi_ac3_bookedseat
                 print('booking ticket')
                 i=1
+                global cost_booking_gorakhdham_ac3
+                
                 while i<=nopassenger:
                     gorakhdham_gkpdelhi_ac3_seattobebooked=gorakhdham_gkpdelhi_seatac3.pop()
                     gorakhdham_gkpdelhi_seatac3_bookedseat.append(gorakhdham_gkpdelhi_ac3_seattobebooked)
                     details_gorakhdham_gkpdelhi()
+                    cost_booking_gorakhdham_ac3=cost_booking_gorakhdham_ac3+1165
                     print('SEAT NUMBER',gorakhdham_gkpdelhi_ac3_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC3 TIER')
                     print()
                     i=i+1
-
+                 
             #FUNCTION TO INITIATE BOOKING GORAKHDHAM DELHI->GKP AC2
             def gorakhdham_delhigkp_ac2_book():
                 global gorakhdham_delhigkp_ac2_bookedseat
                 print('booking ticket')
                 i=1
+                global cost_booking_gorakhdham_ac2
+                
                 while i<=nopassenger:
                     gorakhdham_delhigkp_ac2_seattobebooked=gorakhdham_delhigkp_seatac2.pop()
                     gorakhdham_delhigkp_seatac2_bookedseat.append(gorakhdham_delhigkp_ac2_seattobebooked)
+                    cost_booking_gorakhdham_ac2=cost_booking_gorakhdham_ac2+1645
                     details_gorakhdham_delhigkp()
                     print('SEAT NUMBER',gorakhdham_delhigkp_ac2_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC2 TIER')
                     print()
                     i=i+1
-
-
+                
+            
             #FUNCTION TO INITIATE BOOKING GORAKHDHAM DELHI->GKP AC3
             def gorakhdham_delhigkp_ac3_book():
                 global gorakhdham_delhigkp_ac3_bookedseat
                 print('booking ticket')
                 i=1
+                global cost_booking_gorakhdham_ac3
+                
                 while i<=nopassenger:
                     gorakhdham_delhigkp_ac3_seattobebooked=gorakhdham_delhigkp_seatac3.pop()
                     gorakhdham_delhigkp_seatac3_bookedseat.append(gorakhdham_delhigkp_ac3_seattobebooked)
+                    cost_booking_gorakhdham_ac3=cost_booking_gorakhdham_ac3+1165
                     details_gorakhdham_delhigkp()
                     print('SEAT NUMBER',gorakhdham_delhigkp_ac3_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC3 TIER')
                     print()
                     i=i+1
-
+                
+                      
             #FUNCTION TO INITIATE BOOKING GKP LTT SF GKP->MUMBAI AC2
             def gorakhdham_gkpmumbai_ac2_book():
                 global gorakhdham_gkpmumbai_ac2_bookedseat
                 print('booking ticket')
                 i=1
+                global cost_booking_gkplttsf_ac2
+                
                 while i<=nopassenger:
                     gorakhdham_gkpmumbai_ac2_seattobebooked=gorakhdham_gkpmumbai_seatac2.pop()
                     gorakhdham_gkpmumbai_seatac2_bookedseat.append(gorakhdham_gkpmumbai_ac2_seattobebooked)
+                    cost_booking_gkplttsf_ac2=cost_booking_gkplttsf_ac2+2645
                     details_gkpltt_gkpmumbai()        
                     print('SEAT NUMBER',gorakhdham_gkpmumbai_ac2_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC2 TIER')
                     print()
                     i=i+1
-
-
+                
+            
             #FUNCTION TO INITIATE BOOKING GKP LTT SF GKP->MUMBAI AC3
             def gorakhdham_gkpmumbai_ac3_book():
                 global gorakhdham_gkpmumbai_ac3_bookedseat
                 print('booking ticket')
                 i=1
+                global cost_booking_gkplttsf_ac3
+                
                 while i<=nopassenger:
                     gorakhdham_gkpmumbai_ac3_seattobebooked=gorakhdham_gkpmumbai_seatac3.pop()
                     gorakhdham_gkpmumbai_seatac3_bookedseat.append(gorakhdham_gkpmumbai_ac3_seattobebooked)
+                    cost_booking_gkplttsf_ac3=cost_booking_gkplttsf_ac3+1840
                     details_gkpltt_gkpmumbai()
                     print('SEAT NUMBER',gorakhdham_gkpmumbai_ac3_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC3 TIER')
                     print()
                     i=i+1
-
+                
             #FUNCTION TO INITIATE BOOKING GKP LTT SF MUMBAI->GKP AC2
             def gorakhdham_mumbaigkp_ac2_book():
                 global gorakhdham_mumbaigkp_ac2_bookedseat
                 print('booking ticket')
                 i=1
+                global cost_booking_gkplttsf_ac2
+                
                 while i<=nopassenger:
                     gorakhdham_mumbaigkp_ac2_seattobebooked=gorakhdham_mumbaigkp_seatac2.pop()
                     gorakhdham_mumbaigkp_seatac2_bookedseat.append(gorakhdham_mumbaigkp_ac2_seattobebooked)
+                    cost_booking_gkplttsf_ac2=cost_booking_gkplttsf_ac2+2645
                     details_gkpltt_mumbaigkp()
                     print('SEAT NUMBER',gorakhdham_mumbaigkp_ac2_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC2 TIER')
                     print()
                     i=i+1
- 
+                 
+                 
             #FUNCTION TO INITIATE BOOKING GKP LTT SF MUMBAI->GKP AC3
             def gorakhdham_mumbaigkp_ac3_book():
                 global gorakhdham_mumbaigkp_ac3_bookedseat
                 print('booking ticket')
                 i=1
+                global cost_booking_gkplttsf_ac3
+                
                 while i<=nopassenger:
                     gorakhdham_mumbaigkp_ac3_seattobebooked=gorakhdham_mumbaigkp_seatac3.pop()
                     gorakhdham_mumbaigkp_seatac3_bookedseat.append(gorakhdham_mumbaigkp_ac3_seattobebooked)
+                    cost_booking_gkplttsf_ac3=cost_booking_gkplttsf_ac3+1840
                     details_gkpltt_mumbaigkp()
                     print('SEAT NUMBER',gorakhdham_mumbaigkp_ac3_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC3 TIER')
                     print()
                     i=i+1
-        
+                    
             #FUNCTION TO INITIATE BOOKING MMCT TEJAS RAJ DELHI->MUMBAI AC2
             def gorakhdham_delhimumbai_ac2_book():
                 global gorakhdham_delhimumbai_ac2_bookedseat
                 print('booking ticket')
                 i=1
+                global cost_booking_mmcttejas_ac2
+                
                 while i<=nopassenger:
                     gorakhdham_delhimumbai_ac2_seattobebooked=gorakhdham_delhimumbai_seatac2.pop()
                     gorakhdham_delhimumbai_seatac2_bookedseat.append(gorakhdham_delhimumbai_ac2_seattobebooked)
+                    cost_booking_mmcttejas_ac2=cost_booking_mmcttejas_ac2+4245
                     details_mmcttejasraj_delhimumbai()
                     print('SEAT NUMBER',gorakhdham_delhimumbai_ac2_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC2 TIER')
                     print()
                     i=i+1
-        
+                    
             #FUNCTION TO INITIATE BOOKING MMTC TEJAS RAJ DELHI->MUMBAI AC3
             def gorakhdham_delhimumbai_ac3_book():
                 global gorakhdham_delhimumbai_ac3_bookedseat
                 print('booking ticket')
                 i=1
+                global cost_booking_mmcttejas_ac3
+                
                 while i<=nopassenger:
                     gorakhdham_delhimumbai_ac3_seattobebooked=gorakhdham_delhimumbai_seatac3.pop()
                     gorakhdham_delhimumbai_seatac3_bookedseat.append(gorakhdham_delhimumbai_ac3_seattobebooked)
+                    cost_booking_mmcttejas_ac3=cost_booking_mmcttejas_ac3+3085
                     details_mmcttejasraj_delhimumbai()
                     print('SEAT NUMBER',gorakhdham_delhimumbai_ac3_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC3 TIER')
                     print()
                     i=i+1
-        
+                
+                    
             #FUNCTION TO INITIATE BOOKING NDLS TEJAS RAJ MUMBAI->DELHI AC2
             def gorakhdham_mumbaidelhi_ac2_book():
                 global gorakhdham_mumbaigkp_ac2_bookedseat
                 print('booking ticket')
                 i=1
+                global cost_booking_ndlstejas_ac2
+                
                 while i<=nopassenger:
                     gorakhdham_mumbaidelhi_ac2_seattobebooked=gorakhdham_mumbaidelhi_seatac2.pop()
                     gorakhdham_mumbaidelhi_seatac2_bookedseat.append(gorakhdham_mumbaidelhi_ac2_seattobebooked)
+                    cost_booking_ndlstejas_ac2=cost_booking_ndlstejas_ac2+4245
                     details_ndlstejasraj_mumbaidelhi()
                     print('SEAT NUMBER',gorakhdham_mumbaidelhi_ac2_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC2 TIER')
                     print()
                     i=i+1
-        
+                     
             #FUNCTION TO INITIATE BOOKING NDLS TEJAS RAJ MUMBAI->DELHI AC3
             def gorakhdham_mumbaidelhi_ac3_book():
                 global gorakhdham_mumbaidelhi_ac3_bookedseat
                 print('booking ticket')
                 i=1
+                global cost_booking_ndlstejas_ac3
+                
                 while i<=nopassenger:
                     gorakhdham_mumbaidelhi_ac3_seattobebooked=gorakhdham_mumbaidelhi_seatac3.pop()
                     gorakhdham_mumbaidelhi_seatac3_bookedseat.append(gorakhdham_mumbaidelhi_ac3_seattobebooked)
+                    cost_booking_ndlstejas_ac3=cost_booking_ndlstejas_ac3+3085
                     details_ndlstejasraj_mumbaidelhi()
                     print('SEAT NUMBER',gorakhdham_mumbaidelhi_ac3_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC3 TIER')
                     print()
-                    i=i+1
+                    i=i+1 
+                           
             #TRAIN FOR DELHI AND GORAKHPUR ROUTE
             def gkpdelhitrains(stlo):
                 global clas
+                global nopassenger
+                global cost_booking_gorakhdham_ac2
+                global cost_booking_gorakhdham_ac3
             #GORAKHPUR--->DELHI TRAIN
                 if stlo=='GORAKHPUR':
                     #DETAILS OF TRAIN
@@ -530,7 +619,7 @@ if choice == 1:
                                 if option==1: 
                                     nopassenger=int(input('no of passenger'))
                                     if (len(gorakhdham_gkpdelhi_seatac2)-nopassenger)>=0:
-                                        gorakhdham_gkpdelhi_ac2_book()
+                                     gorakhdham_gkpdelhi_ac2_book()
                                     else :
                                         print('SEATS NOT AVAILABLE')
                                 else :
@@ -541,9 +630,11 @@ if choice == 1:
                                         gorakhdham_gkpdelhi_seatac2.append(gorakhdham_gkpdelhi_ac2_seattoberemoved)
                                         details_gorakhdham_gkpdelhi()
                                         print('SEAT NUMBER',gorakhdham_gkpdelhi_ac2_seattoberemoved,'HAS BEEN SUCESSFULL CANCELED')
+                                        cost_booking_gorakhdham_ac2=cost_booking_gorakhdham_ac2-1645
                                     else:
                                         print('invalid')
-                                furtheroption()        
+                                furtheroption()
+                            print('TOTAL COST OF BOOKING Rs',cost_booking_gorakhdham_ac2)
                         elif clas=='AC3':
                             gorakhdham_gkpdelhi_ac3_book()
                             furtheroption()
@@ -551,7 +642,7 @@ if choice == 1:
                                 if option==1: 
                                     nopassenger=int(input('no of passenger'))
                                     if (len(gorakhdham_gkpdelhi_seatac3)-nopassenger)>=0:
-                                        gorakhdham_gkpdelhi_ac3_book()
+                                     gorakhdham_gkpdelhi_ac3_book()
                                     else :
                                         print('SEATS NOT AVAILABLE')
                                 else :
@@ -562,9 +653,11 @@ if choice == 1:
                                         gorakhdham_gkpdelhi_seatac3.append(gorakhdham_gkpdelhi_ac3_seattoberemoved)
                                         details_gorakhdham_gkpdelhi()
                                         print('SEAT NUMBER',gorakhdham_gkpdelhi_ac3_seattoberemoved,'HAS BEEN SUCESSFULL CANCELED')
+                                        cost_booking_gorakhdham_ac3=cost_booking_gorakhdham_ac3-1165
                                     else:
                                         print('invalid')
                                 furtheroption()
+                            print('TOTAL COST OF BOOKING Rs',cost_booking_gorakhdham_ac3)
                         else:
                             pass
                         
@@ -581,7 +674,7 @@ if choice == 1:
                         else:
                             print('INVALID DATA ENTRY')
                 elif stlo=='NEW DELHI':
-
+            
             #TRAIN FROM DELHI TO GORAKHPUR
                     details_gorakhdham_delhigkp()      
                     CLASSAVAIL=['AC2','AC3']
@@ -595,7 +688,7 @@ if choice == 1:
                                 if option==1: 
                                     nopassenger=int(input('no of passenger'))
                                     if (len(gorakhdham_delhigkp_seatac2)-nopassenger)>=0:
-                                        gorakhdham_delhigkp_ac2_book()
+                                     gorakhdham_delhigkp_ac2_book()
                                     else :
                                         print('SEATS NOT AVAILABLE')
                                 else :
@@ -606,9 +699,11 @@ if choice == 1:
                                         gorakhdham_delhigkp_seatac2.append(gorakhdham_delhigkp_ac2_seattoberemoved)
                                         details_gorakhdham_delhigkp()
                                         print('SEAT NUMBER',gorakhdham_delhigkp_ac2_seattoberemoved,'HAS BEEN SUCESSFULL CANCELED')
+                                        cost_booking_gorakhdham_ac2=cost_booking_gorakhdham_ac2-1645
                                     else:
                                         print('invalid')
-                                furtheroption()                    
+                                furtheroption()
+                            print('TOTAL COST OF BOOKING Rs',cost_booking_gorakhdham_ac2)
                         elif clas=='AC3':
                             gorakhdham_delhigkp_ac3_book()
                             furtheroption()
@@ -616,7 +711,7 @@ if choice == 1:
                                 if option==1: 
                                     nopassenger=int(input('no of passenger'))
                                     if (len(gorakhdham_delhigkp_seatac3)-nopassenger)>=0:
-                                        gorakhdham_delhigkp_ac3_book()
+                                     gorakhdham_delhigkp_ac3_book()
                                     else :
                                         print('SEATS NOT AVAILABLE')
                                 else :
@@ -627,9 +722,11 @@ if choice == 1:
                                         gorakhdham_delhigkp_seatac3.append(gorakhdham_delhigkp_ac3_seattoberemoved)
                                         details_gorakhdham_delhigkp()
                                         print('SEAT NUMBER',gorakhdham_delhigkp_ac3_seattoberemoved,'HAS BEEN SUCESSFULL CANCELED')
+                                        cost_booking_gorakhdham_ac3=cost_booking_gorakhdham_ac2-1165
                                     else:
                                         print('invalid')
                                 furtheroption()
+                            print('TOTAL COST OF BOOKING Rs',cost_booking_gorakhdham_ac3)
                         else:
                             pass
                         
@@ -646,10 +743,13 @@ if choice == 1:
                             pass
                         else:
                             print('INVALID DATA ENTRY')
-
+            
             #TRAINS ON GORAKHPUR MUMBAI ROUTE
                     
             def gkpmumbaitrains(stlo):
+                global cost_booking_gkplttsf_ac2
+                global cost_booking_gkplttsf_ac3
+                global nopassenger
                 global clas
                 if stlo=='GORAKHPUR':
                     details_gkpltt_gkpmumbai()
@@ -664,10 +764,10 @@ if choice == 1:
                                 if option==1: 
                                     nopassenger=int(input('no of passenger'))
                                     if (len(gorakhdham_gkpmumbai_seatac2)-nopassenger)>=0:
-                                        gorakhdham_gkpmumbai_ac2_book()
+                                     gorakhdham_gkpmumbai_ac2_book()
                                     else :
                                         print('SEATS NOT AVAILABLE')
-                                else :
+                                elif option==2 :
                                     print('CANCELLING BOOKING')
                                     gorakhdham_gkpmumbai_ac2_seattoberemoved=int(input('PRINT SEAT NUMBER TO BE CANCELED'))
                                     if gorakhdham_gkpmumbai_ac2_seattoberemoved in gorakhdham_gkpmumbai_seatac2_bookedseat:
@@ -675,9 +775,14 @@ if choice == 1:
                                         gorakhdham_gkpmumbai_seatac2.append(gorakhdham_gkpmumbai_ac2_seattoberemoved)
                                         details_gkpltt_gkpmumbai()
                                         print('SEAT NUMBER',gorakhdham_gkpmumbai_ac2_seattoberemoved,'HAS BEEN SUCESSFULL CANCELED')
+                                        cost_booking_gkplttsf_ac2=cost_booking_gkplttsf_ac2-2645
                                     else:
                                         print('invalid')
-                                furtheroption()                    
+                                else:
+                                    print('INVALID')
+                                    break                       
+                                furtheroption()
+                            print('TOTAL COST OF BOOKING Rs',cost_booking_gkplttsf_ac2)
                         elif clas=='AC3':
                             gorakhdham_gkpmumbai_ac3_book()
                             furtheroption()
@@ -685,10 +790,10 @@ if choice == 1:
                                 if option==1: 
                                     nopassenger=int(input('no of passenger'))
                                     if (len(gorakhdham_gkpmumbai_seatac3)-nopassenger)>=0:
-                                        gorakhdham_gkpmumbai_ac3_book()
+                                     gorakhdham_gkpmumbai_ac3_book()
                                     else :
                                         print('SEATS NOT AVAILABLE')
-                                else :
+                                elif option==2 :
                                     print('CANCELLING BOOKING')
                                     gorakhdham_gkpmumbai_ac3_seattoberemoved=int(input('PRINT SEAT NUMBER TO BE CANCELED'))
                                     if gorakhdham_gkpmumbai_ac3_seattoberemoved in gorakhdham_gkpmumbai_seatac3_bookedseat:
@@ -696,13 +801,18 @@ if choice == 1:
                                         gorakhdham_gkpmumbai_seatac3.append(gorakhdham_gkpmumbai_ac3_seattoberemoved)
                                         details_gkpltt_gkpmumbai()
                                         print('SEAT NUMBER',gorakhdham_gkpmumbai_ac3_seattoberemoved,'HAS BEEN SUCESSFULL CANCELED')
+                                        cost_booking_gkplttsf_ac3=cost_booking_gkplttsf_ac3-1840
                                     else:
                                         print('invalid')
+                                else:
+                                    print('INVALID')
+                                    break
                                 furtheroption()
+                            print('TOTAL COST OF BOOKING Rs',cost_booking_gkplttsf_ac3)
                         else:
                             pass
                         
-                    
+                       
                     else :
                         print('SORRY,THE REQUESTED CLASS IS NOT AVAILABLE')
                         print('PRESS 1 TO CHANGE CLASS ')
@@ -721,18 +831,17 @@ if choice == 1:
                     CLASSAVAIL=['AC2','AC3']
                     if clas in CLASSAVAIL:
                         print('REQUIRED CLASS AVAILABLE')
-                        if clas=='AC2':
-                                    
+                        if clas=='AC2':   
                                 gorakhdham_mumbaigkp_ac2_book()
                                 furtheroption()
                                 while option!=3:
                                     if option==1: 
                                         nopassenger=int(input('no of passenger'))
                                         if (len(gorakhdham_mumbaigkp_seatac2)-nopassenger)>=0:
-                                            gorakhdham_mumbaigkp_ac2_book()
+                                         gorakhdham_mumbaigkp_ac2_book()
                                         else :
                                             print('SEATS NOT AVAILABLE')
-                                    else :
+                                    elif option==2 :
                                         print('CANCELLING BOOKING')
                                         gorakhdham_mumbaigkp_ac2_seattoberemoved=int(input('PRINT SEAT NUMBER TO BE CANCELED'))
                                         if gorakhdham_mumbaigkp_ac2_seattoberemoved in gorakhdham_mumbaigkp_seatac2_bookedseat:
@@ -740,9 +849,14 @@ if choice == 1:
                                             gorakhdham_mumbaigkp_seatac2.append(gorakhdham_mumbaigkp_ac2_seattoberemoved)
                                             details_gkpltt_mumbaigkp()
                                             print('SEAT NUMBER',gorakhdham_mumbaigkp_ac2_seattoberemoved,'HAS BEEN SUCESSFULL CANCELED')
+                                            cost_booking_gkplttsf_ac2=cost_booking_gkplttsf_ac2-2645
                                         else:
                                             print('invalid')
-                                    furtheroption()                    
+                                    else:
+                                        print('INVALID')
+                                        break
+                                    furtheroption()
+                                print('TOTAL COST OF BOOKING Rs',cost_booking_gkplttsf_ac2)
                         elif clas=='AC3':
                                 gorakhdham_mumbaigkp_ac3_book()
                                 furtheroption()
@@ -750,10 +864,10 @@ if choice == 1:
                                     if option==1: 
                                         nopassenger=int(input('no of passenger'))
                                         if (len(gorakhdham_mumbaigkp_seatac3)-nopassenger)>=0:
-                                            gorakhdham_mumbaigkp_ac3_book()
+                                         gorakhdham_mumbaigkp_ac3_book()
                                         else :
                                             print('SEATS NOT AVAILABLE')
-                                    else :
+                                    elif option==2 :
                                         print('CANCELLING BOOKING')
                                         gorakhdham_mumbaigkp_ac3_seattoberemoved=int(input('PRINT SEAT NUMBER TO BE CANCELED'))
                                         if gorakhdham_mumbaigkp_ac3_seattoberemoved in gorakhdham_mumbaigkp_seatac3_bookedseat:
@@ -761,9 +875,14 @@ if choice == 1:
                                             gorakhdham_mumbaigkp_seatac3.append(gorakhdham_mumbaigkp_ac3_seattoberemoved)
                                             details_gkpltt_mumbaigkp()
                                             print('SEAT NUMBER',gorakhdham_mumbaigkp_ac3_seattoberemoved,'HAS BEEN SUCESSFULL CANCELED')
+                                            cost_booking_gkplttsf_ac3=cost_booking_gkplttsf_ac3-1840
                                         else:
                                             print('invalid')
+                                    else:
+                                        print('INVALID')
+                                        break
                                     furtheroption()
+                                print('TOTAL COST OF BOOKING Rs',cost_booking_gkplttsf_ac3)
                         else:
                             pass            
                     else :
@@ -778,10 +897,15 @@ if choice == 1:
                             pass
                         else:
                             print('INVALID DATA ENTRY')
-
+            
             #TRAIN ON NEW DELHI MUMBAI ROUTE
-
+            
             def delhimumbaitrains(stlo):
+                global nopassenger
+                global cost_booking_mmcttejas_ac3
+                global cost_booking_mmcttejas_ac2
+                global cost_booking_ndlstejasraj_ac2
+                global cost_booking_ndlstejasraj_ac3
                 global clas
                 if stlo=='NEW DELHI':
                     details_mmcttejasraj_delhimumbai()
@@ -795,10 +919,10 @@ if choice == 1:
                                 if option==1: 
                                     nopassenger=int(input('no of passenger'))
                                     if (len(gorakhdham_delhimumbai_seatac2)-nopassenger)>=0:
-                                        gorakhdham_delhimumbai_ac2_book()
+                                     gorakhdham_delhimumbai_ac2_book()
                                     else :
                                         print('SEATS NOT AVAILABLE')
-                                else :
+                                elif option==2 :
                                     print('CANCELLING BOOKING')
                                     gorakhdham_delhimumbai_ac2_seattoberemoved=int(input('PRINT SEAT NUMBER TO BE CANCELED'))
                                     if gorakhdham_delhimumbai_ac2_seattoberemoved in gorakhdham_delhimumbai_seatac2_bookedseat:
@@ -806,9 +930,14 @@ if choice == 1:
                                         gorakhdham_delhimumbai_seatac2.append(gorakhdham_delhimumbai_ac2_seattoberemoved)
                                         details_mmcttejasraj_delhimumbai()
                                         print('SEAT NUMBER',gorakhdham_delhimumbai_ac2_seattoberemoved,'HAS BEEN SUCESSFULL CANCELED')
+                                        cost_booking_mmcttejas_ac2=cost_booking_mmcttejas_ac2-4245
                                     else:
                                         print('invalid')
+                                else:
+                                    print('INVALID')
+                                    break
                                 furtheroption()
+                            print('TOTAL COST OF BOOKING Rs',cost_booking_mmcttejas_ac2)
                                 
                         elif clas=='AC3':
                             gorakhdham_delhimumbai_ac3_book()
@@ -817,10 +946,10 @@ if choice == 1:
                                 if option==1: 
                                     nopassenger=int(input('no of passenger'))
                                     if (len(gorakhdham_delhimumbai_seatac3)-nopassenger)>=0:
-                                        gorakhdham_delhimumbai_ac3_book()
+                                     gorakhdham_delhimumbai_ac3_book()
                                     else :
                                         print('SEATS NOT AVAILABLE')
-                                else :
+                                elif option==2 :
                                     print('CANCELLING BOOKING')
                                     gorakhdham_delhimumbai_ac3_seattoberemoved=int(input('PRINT SEAT NUMBER TO BE CANCELED'))
                                     if gorakhdham_delhimumbai_ac3_seattoberemoved in gorakhdham_delhimumbai_seatac3_bookedseat:
@@ -828,9 +957,14 @@ if choice == 1:
                                         gorakhdham_delhimumbai_seatac3.append(gorakhdham_delhimumbai_ac3_seattoberemoved)
                                         details_mmcttejasraj_delhimumbai()
                                         print('SEAT NUMBER',gorakhdham_delhimumbai_ac3_seattoberemoved,'HAS BEEN SUCESSFULL CANCELED')
+                                        cost_booking_mmcttejas_ac3=cost_booking_mmcttejas_ac3-3085
                                     else:
                                         print('invalid')
+                                else:
+                                    print('INVALID')
+                                    break
                                 furtheroption()
+                            print('TOTAL COST OF BOOKING Rs',cost_booking_mmcttejas_ac3)
                         else:
                             pass           
                     else :
@@ -862,7 +996,7 @@ if choice == 1:
                                         gorakhdham_mumbaidelhi_ac2_book()
                                     else :
                                         print('SEATS NOT AVAILABLE')
-                                else :
+                                elif option==2 :
                                     print('CANCELLING BOOKING')
                                     gorakhdham_mumbaidelhi_ac2_seattoberemoved=int(input('PRINT SEAT NUMBER TO BE CANCELED'))
                                     if gorakhdham_mumbaidelhi_ac2_seattoberemoved in gorakhdham_mumbaidelhi_seatac2_bookedseat:
@@ -870,9 +1004,14 @@ if choice == 1:
                                         gorakhdham_mumbaidelhi_seatac2.append(gorakhdham_mumbaidelhi_ac2_seattoberemoved)
                                         details_ndlstejasraj_mumbaidelhi()
                                         print('SEAT NUMBER',gorakhdham_mumbaidelhi_ac2_seattoberemoved,'HAS BEEN SUCESSFULL CANCELED')
+                                        cost_booking_ndlstejasraj_ac2=cost_booking_ndlstejasraj_ac2-4245
                                     else:
                                         print('invalid')
+                                else:
+                                    print('INVALID')
+                                    break
                                 furtheroption()
+                            print('TOTAL COST OF BOOKING Rs',cost_booking_ndlstejasraj_ac2)
                                     
                         elif clas=='AC3':
                                 gorakhdham_mumbaidelhi_ac3_book()
@@ -881,10 +1020,10 @@ if choice == 1:
                                     if option==1: 
                                         nopassenger=int(input('no of passenger'))
                                         if (len(gorakhdham_mumbaidelhi_seatac3)-nopassenger)>=0:
-                                            gorakhdham_mumbaidelhi_ac3_book()
+                                         gorakhdham_mumbaidelhi_ac3_book()
                                         else :
                                             print('SEATS NOT AVAILABLE')
-                                    else :
+                                    elif option==2 :
                                         print('CANCELLING BOOKING')
                                         gorakhdham_mumbaidelhi_ac3_seattoberemoved=int(input('PRINT SEAT NUMBER TO BE CANCELED'))
                                         if gorakhdham_mumbaidelhi_ac3_seattoberemoved in gorakhdham_mumbaidelhi_seatac3_bookedseat:
@@ -892,9 +1031,14 @@ if choice == 1:
                                             gorakhdham_mumbaidelhi_seatac3.append(gorakhdham_mumbaidelhi_ac3_seattoberemoved)
                                             details_ndlstejasraj_mumbaidelhi()
                                             print('SEAT NUMBER',gorakhdham_mumbaidelhi_ac3_seattoberemoved,'HAS BEEN SUCESSFULL CANCELED')
+                                            cost_booking_ndlstejasraj_ac3=cost_booking_ndlstejas_ac3-3085
                                         else:
                                             print('invalid')
+                                    else:
+                                        print('INVALID')
+                                        break
                                     furtheroption()
+                                print('TOTAL COST OF BOOKING Rs',cost_booking_ndlstejasraj_ac3)
                         else:
                             pass               
                 else :
@@ -920,9 +1064,6 @@ if choice == 1:
                     gkpmumbaitrains(stlo)
                 else:
                     print('invalid')
-            
-            
-    
             #MAIN PROGRAM
             bookinginitial()
             create_railways_table(cursor)
