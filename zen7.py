@@ -249,6 +249,30 @@ if choice == 1:
                 global nopassenger
                 nopassenger=int(input("NO OF PASSENGERS"))
             
+                #CHECK FOR BOOKING
+                global stlo
+                stlo=str(input("Enter Source Station="))
+                while stlo not in ['NEW DELHI','MUMBAI','GORAKHPUR']:
+                    print('INVALID DATA')
+                    stlo=str(input("Enter Source Station="))
+                global enlo
+                enlo=str(input("Enter end station="))
+                while enlo not in ['NEW DELHI','MUMBAI','GORAKHPUR']:
+                    print('INVALID DATA')
+                    enlo=str(input("Enter Source Station="))
+                global clas
+                clas=str(input("Enter class(eg AC2 for AC second tier)"))
+                global stdate
+                STDATE=str(input('ENTER DATE FOR BOOKING(USE FORMAT YYYY-MM-DD)'))
+                stdate=date.fromisoformat(STDATE)
+                while stdate<date.today():
+                    print('INVALID DATE')
+                    STDATE=str(input('ENTER DATE FOR BOOKING(USE FORMAT YYYY-MM-DD)'))
+                    stdate=date.fromisoformat(STDATE)
+                
+                global nopassenger
+                nopassenger=int(input("NO OF PASSENGERS"))
+
             #CHECK FOR BOOKING
             def furtheroption():   
                 print('press 1 to continue booking further')
@@ -282,7 +306,9 @@ if choice == 1:
             gorakhdham_mumbaidelhi_seatac2=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
             #TOTAL SEATS IN AC3 TIER NDLS  TEJAS RAJ MUMBAI->DELHI
             gorakhdham_mumbaidelhi_seatac3=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
-                   
+            
+            
+            
             #LISTS OF BOOKED SEATS ACCORDING TO TRAIN AND TIER
             gorakhdham_gkpdelhi_seatac2_bookedseat=[]
             gorakhdham_gkpdelhi_seatac3_bookedseat=[]
@@ -295,7 +321,9 @@ if choice == 1:
             gorakhdham_delhimumbai_seatac2_bookedseat=[]
             gorakhdham_delhimumbai_seatac3_bookedseat=[]
             gorakhdham_mumbaidelhi_seatac2_bookedseat=[]
-            gorakhdham_mumbaidelhi_seatac3_bookedseat=[]          
+            gorakhdham_mumbaidelhi_seatac3_bookedseat=[]
+            
+            
             
             #FUNCTION TO PRINT DETAILS ON TICKET
             
@@ -412,7 +440,8 @@ if choice == 1:
                 while i<=nopassenger:
                     gorakhdham_gkpdelhi_ac2_seattobebooked=gorakhdham_gkpdelhi_seatac2.pop()
                     gorakhdham_gkpdelhi_seatac2_bookedseat.append(gorakhdham_gkpdelhi_ac2_seattobebooked)
-                    cost_booking_gorakhdham_ac2=cost_booking_gorakhdham_ac2+1645
+                    cost_booking_gorakhdham_ac2=cost_booking_gorakhdham_ac2+1645+1645*0.05
+                    # GST INCLUDED IN CALCULATION
                     details_gorakhdham_gkpdelhi()
                     print('SEAT NUMBER',gorakhdham_gkpdelhi_ac2_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC2 TIER')
                     print()      
@@ -429,7 +458,7 @@ if choice == 1:
                     gorakhdham_gkpdelhi_ac3_seattobebooked=gorakhdham_gkpdelhi_seatac3.pop()
                     gorakhdham_gkpdelhi_seatac3_bookedseat.append(gorakhdham_gkpdelhi_ac3_seattobebooked)
                     details_gorakhdham_gkpdelhi()
-                    cost_booking_gorakhdham_ac3=cost_booking_gorakhdham_ac3+1165
+                    cost_booking_gorakhdham_ac3=cost_booking_gorakhdham_ac3+1165+1165*0.05
                     print('SEAT NUMBER',gorakhdham_gkpdelhi_ac3_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC3 TIER')
                     print()
                     i=i+1
@@ -444,7 +473,7 @@ if choice == 1:
                 while i<=nopassenger:
                     gorakhdham_delhigkp_ac2_seattobebooked=gorakhdham_delhigkp_seatac2.pop()
                     gorakhdham_delhigkp_seatac2_bookedseat.append(gorakhdham_delhigkp_ac2_seattobebooked)
-                    cost_booking_gorakhdham_ac2=cost_booking_gorakhdham_ac2+1645
+                    cost_booking_gorakhdham_ac2=cost_booking_gorakhdham_ac2+1645+1645*0.05
                     details_gorakhdham_delhigkp()
                     print('SEAT NUMBER',gorakhdham_delhigkp_ac2_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC2 TIER')
                     print()
@@ -461,7 +490,7 @@ if choice == 1:
                 while i<=nopassenger:
                     gorakhdham_delhigkp_ac3_seattobebooked=gorakhdham_delhigkp_seatac3.pop()
                     gorakhdham_delhigkp_seatac3_bookedseat.append(gorakhdham_delhigkp_ac3_seattobebooked)
-                    cost_booking_gorakhdham_ac3=cost_booking_gorakhdham_ac3+1165
+                    cost_booking_gorakhdham_ac3=cost_booking_gorakhdham_ac3+1165+1165*0.05
                     details_gorakhdham_delhigkp()
                     print('SEAT NUMBER',gorakhdham_delhigkp_ac3_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC3 TIER')
                     print()
@@ -478,7 +507,7 @@ if choice == 1:
                 while i<=nopassenger:
                     gorakhdham_gkpmumbai_ac2_seattobebooked=gorakhdham_gkpmumbai_seatac2.pop()
                     gorakhdham_gkpmumbai_seatac2_bookedseat.append(gorakhdham_gkpmumbai_ac2_seattobebooked)
-                    cost_booking_gkplttsf_ac2=cost_booking_gkplttsf_ac2+2645
+                    cost_booking_gkplttsf_ac2=cost_booking_gkplttsf_ac2+2645+2645*0.05
                     details_gkpltt_gkpmumbai()        
                     print('SEAT NUMBER',gorakhdham_gkpmumbai_ac2_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC2 TIER')
                     print()
@@ -495,7 +524,7 @@ if choice == 1:
                 while i<=nopassenger:
                     gorakhdham_gkpmumbai_ac3_seattobebooked=gorakhdham_gkpmumbai_seatac3.pop()
                     gorakhdham_gkpmumbai_seatac3_bookedseat.append(gorakhdham_gkpmumbai_ac3_seattobebooked)
-                    cost_booking_gkplttsf_ac3=cost_booking_gkplttsf_ac3+1840
+                    cost_booking_gkplttsf_ac3=cost_booking_gkplttsf_ac3+1840+1840*0.05
                     details_gkpltt_gkpmumbai()
                     print('SEAT NUMBER',gorakhdham_gkpmumbai_ac3_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC3 TIER')
                     print()
@@ -511,7 +540,7 @@ if choice == 1:
                 while i<=nopassenger:
                     gorakhdham_mumbaigkp_ac2_seattobebooked=gorakhdham_mumbaigkp_seatac2.pop()
                     gorakhdham_mumbaigkp_seatac2_bookedseat.append(gorakhdham_mumbaigkp_ac2_seattobebooked)
-                    cost_booking_gkplttsf_ac2=cost_booking_gkplttsf_ac2+2645
+                    cost_booking_gkplttsf_ac2=cost_booking_gkplttsf_ac2+2645+2645*0.05
                     details_gkpltt_mumbaigkp()
                     print('SEAT NUMBER',gorakhdham_mumbaigkp_ac2_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC2 TIER')
                     print()
@@ -528,7 +557,7 @@ if choice == 1:
                 while i<=nopassenger:
                     gorakhdham_mumbaigkp_ac3_seattobebooked=gorakhdham_mumbaigkp_seatac3.pop()
                     gorakhdham_mumbaigkp_seatac3_bookedseat.append(gorakhdham_mumbaigkp_ac3_seattobebooked)
-                    cost_booking_gkplttsf_ac3=cost_booking_gkplttsf_ac3+1840
+                    cost_booking_gkplttsf_ac3=cost_booking_gkplttsf_ac3+1840+1840*0.05
                     details_gkpltt_mumbaigkp()
                     print('SEAT NUMBER',gorakhdham_mumbaigkp_ac3_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC3 TIER')
                     print()
@@ -544,7 +573,7 @@ if choice == 1:
                 while i<=nopassenger:
                     gorakhdham_delhimumbai_ac2_seattobebooked=gorakhdham_delhimumbai_seatac2.pop()
                     gorakhdham_delhimumbai_seatac2_bookedseat.append(gorakhdham_delhimumbai_ac2_seattobebooked)
-                    cost_booking_mmcttejas_ac2=cost_booking_mmcttejas_ac2+4245
+                    cost_booking_mmcttejas_ac2=cost_booking_mmcttejas_ac2+4245+4245*0.05
                     details_mmcttejasraj_delhimumbai()
                     print('SEAT NUMBER',gorakhdham_delhimumbai_ac2_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC2 TIER')
                     print()
@@ -560,7 +589,7 @@ if choice == 1:
                 while i<=nopassenger:
                     gorakhdham_delhimumbai_ac3_seattobebooked=gorakhdham_delhimumbai_seatac3.pop()
                     gorakhdham_delhimumbai_seatac3_bookedseat.append(gorakhdham_delhimumbai_ac3_seattobebooked)
-                    cost_booking_mmcttejas_ac3=cost_booking_mmcttejas_ac3+3085
+                    cost_booking_mmcttejas_ac3=cost_booking_mmcttejas_ac3+3085+3085*0.05
                     details_mmcttejasraj_delhimumbai()
                     print('SEAT NUMBER',gorakhdham_delhimumbai_ac3_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC3 TIER')
                     print()
@@ -577,7 +606,7 @@ if choice == 1:
                 while i<=nopassenger:
                     gorakhdham_mumbaidelhi_ac2_seattobebooked=gorakhdham_mumbaidelhi_seatac2.pop()
                     gorakhdham_mumbaidelhi_seatac2_bookedseat.append(gorakhdham_mumbaidelhi_ac2_seattobebooked)
-                    cost_booking_ndlstejas_ac2=cost_booking_ndlstejas_ac2+4245
+                    cost_booking_ndlstejas_ac2=cost_booking_ndlstejas_ac2+4245+4245*0.05
                     details_ndlstejasraj_mumbaidelhi()
                     print('SEAT NUMBER',gorakhdham_mumbaidelhi_ac2_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC2 TIER')
                     print()
@@ -593,7 +622,7 @@ if choice == 1:
                 while i<=nopassenger:
                     gorakhdham_mumbaidelhi_ac3_seattobebooked=gorakhdham_mumbaidelhi_seatac3.pop()
                     gorakhdham_mumbaidelhi_seatac3_bookedseat.append(gorakhdham_mumbaidelhi_ac3_seattobebooked)
-                    cost_booking_ndlstejas_ac3=cost_booking_ndlstejas_ac3+3085
+                    cost_booking_ndlstejas_ac3=cost_booking_ndlstejas_ac3+3085+3085*0.05
                     details_ndlstejasraj_mumbaidelhi()
                     print('SEAT NUMBER',gorakhdham_mumbaidelhi_ac3_seattobebooked,'HAS BEEN SUCESSFULLY BOOKED IN AC3 TIER')
                     print()
@@ -635,6 +664,7 @@ if choice == 1:
                                         print('invalid')
                                 furtheroption()
                             print('TOTAL COST OF BOOKING Rs',cost_booking_gorakhdham_ac2)
+                            print('ALL THE PRICES ARE SUBJECTED TO 5% GST,ACCORDING TO GOVERNMENT OF INDIA RULES AND REGULATIONS')
                         elif clas=='AC3':
                             gorakhdham_gkpdelhi_ac3_book()
                             furtheroption()
@@ -658,6 +688,7 @@ if choice == 1:
                                         print('invalid')
                                 furtheroption()
                             print('TOTAL COST OF BOOKING Rs',cost_booking_gorakhdham_ac3)
+                            print('ALL THE PRICES ARE SUBJECTED TO 5% GST,ACCORDING TO GOVERNMENT OF INDIA RULES AND REGULATIONS')
                         else:
                             pass
                         
@@ -704,6 +735,7 @@ if choice == 1:
                                         print('invalid')
                                 furtheroption()
                             print('TOTAL COST OF BOOKING Rs',cost_booking_gorakhdham_ac2)
+                            print('ALL THE PRICES ARE SUBJECTED TO 5% GST,ACCORDING TO GOVERNMENT OF INDIA RULES AND REGULATIONS')
                         elif clas=='AC3':
                             gorakhdham_delhigkp_ac3_book()
                             furtheroption()
@@ -727,6 +759,7 @@ if choice == 1:
                                         print('invalid')
                                 furtheroption()
                             print('TOTAL COST OF BOOKING Rs',cost_booking_gorakhdham_ac3)
+                            print('ALL THE PRICES ARE SUBJECTED TO 5% GST,ACCORDING TO GOVERNMENT OF INDIA RULES AND REGULATIONS')
                         else:
                             pass
                         
@@ -783,6 +816,7 @@ if choice == 1:
                                     break                       
                                 furtheroption()
                             print('TOTAL COST OF BOOKING Rs',cost_booking_gkplttsf_ac2)
+                            print('ALL THE PRICES ARE SUBJECTED TO 5% GST,ACCORDING TO GOVERNMENT OF INDIA RULES AND REGULATIONS')
                         elif clas=='AC3':
                             gorakhdham_gkpmumbai_ac3_book()
                             furtheroption()
@@ -809,6 +843,7 @@ if choice == 1:
                                     break
                                 furtheroption()
                             print('TOTAL COST OF BOOKING Rs',cost_booking_gkplttsf_ac3)
+                            print('ALL THE PRICES ARE SUBJECTED TO 5% GST,ACCORDING TO GOVERNMENT OF INDIA RULES AND REGULATIONS')
                         else:
                             pass
                         
@@ -857,6 +892,7 @@ if choice == 1:
                                         break
                                     furtheroption()
                                 print('TOTAL COST OF BOOKING Rs',cost_booking_gkplttsf_ac2)
+                                print('ALL THE PRICES ARE SUBJECTED TO 5% GST,ACCORDING TO GOVERNMENT OF INDIA RULES AND REGULATIONS')
                         elif clas=='AC3':
                                 gorakhdham_mumbaigkp_ac3_book()
                                 furtheroption()
@@ -883,6 +919,7 @@ if choice == 1:
                                         break
                                     furtheroption()
                                 print('TOTAL COST OF BOOKING Rs',cost_booking_gkplttsf_ac3)
+                                print('ALL THE PRICES ARE SUBJECTED TO 5% GST,ACCORDING TO GOVERNMENT OF INDIA RULES AND REGULATIONS')
                         else:
                             pass            
                     else :
@@ -938,6 +975,7 @@ if choice == 1:
                                     break
                                 furtheroption()
                             print('TOTAL COST OF BOOKING Rs',cost_booking_mmcttejas_ac2)
+                            print('ALL THE PRICES ARE SUBJECTED TO 5% GST,ACCORDING TO GOVERNMENT OF INDIA RULES AND REGULATIONS')
                                 
                         elif clas=='AC3':
                             gorakhdham_delhimumbai_ac3_book()
@@ -965,6 +1003,7 @@ if choice == 1:
                                     break
                                 furtheroption()
                             print('TOTAL COST OF BOOKING Rs',cost_booking_mmcttejas_ac3)
+                            print('ALL THE PRICES ARE SUBJECTED TO 5% GST,ACCORDING TO GOVERNMENT OF INDIA RULES AND REGULATIONS')
                         else:
                             pass           
                     else :
@@ -1012,6 +1051,7 @@ if choice == 1:
                                     break
                                 furtheroption()
                             print('TOTAL COST OF BOOKING Rs',cost_booking_ndlstejas_ac2)
+                            print('ALL THE PRICES ARE SUBJECTED TO 5% GST,ACCORDING TO GOVERNMENT OF INDIA RULES AND REGULATIONS')
                                     
                         elif clas=='AC3':
                                 gorakhdham_mumbaidelhi_ac3_book()
@@ -1038,7 +1078,9 @@ if choice == 1:
                                         print('INVALID')
                                         break
                                     furtheroption()
-                                print('TOTAL COST OF BOOKING Rs',cost_booking_ndlstejas_ac3)
+                                print('TOTAL COST OF BOOKING Rs',cost_booking_ndlstejas_ac3,)
+                                print('ALL THE PRICES ARE SUBJECTED TO 5% GST,ACCORDING TO GOVERNMENT OF INDIA RULES AND REGULATIONS')
+            
                         else:
                             pass               
                 else :
@@ -1066,6 +1108,7 @@ if choice == 1:
                     print('invalid')
             #MAIN PROGRAM
             bookinginitial()
+
             create_railways_table(cursor)
             if (stlo=="GORAKHPUR" and enlo=="NEW DELHI") or (stlo=="NEW DELHI" and enlo=="GORAKHPUR"):
                 if clas=='AC2':
