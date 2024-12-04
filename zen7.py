@@ -74,22 +74,78 @@ def print_whole_table(cursor):
     for row in rows:
         print(f"{row[0]:<6} | {row[1]:<12}  | {row[2]:<15} | {row[3]:<25} | {row[4]:<10}")
 
-#Defining the admin user
-def admin_user():
-    username=username_entry.get().strip()
-    if username=="Harsh":
-        print("What you want to access")
-        print("Enter User data To access userdata table")
-        Accessibility=input("Please enter data to be accessed")
-        if Accessibility=="userdata":
-            print_whole_table(cursor)
-            NextStep=input("Enter Next Step")
-            if NextStep=="Continue":
-                print("Continuing")
-            else:
-                print("Exiting the program")
-        else:
-            print("No data entered")
+#Function to create railways table 
+        
+def create_railways_table(cursor):
+    query='''
+    CREATE TABLE IF NOT EXISTS Raildata(
+    sr_no INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(20),
+    Travelling_mode VARCHAR(20),
+    Total_Distance_Travelled INT,
+    Ac_Tier VARCHAR(20),
+    Total_Journey_cost INT
+    )
+'''
+    cursor.execute(query)
+    print("Raildata Table created if not exist")
+
+#Function to create Bus data table
+def create_bus_table(cursor):
+    query='''
+    CREATE TABLE IF NOT EXISTS Bustable(
+    sr_no INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(20),
+    Travelling_mode VARCHAR(20),
+    Total_Distance_Travelled VARCHAR(20),
+    Total_Journey_cost VARCHAR(20)
+    )
+'''
+    cursor.execute(query)
+    print("Bustable created if not exist ")
+
+#Function to add data in railways table
+def add_railuser(username,TravellinMode,TotalDistTravelled,Ac_Tier,Total_Journey_cost):
+    query='''INSERT INTO Raildata(Username,Travelling_mode,Total_Distance_Travelled,Ac_Tier,Total_Journey_cost) VALUES(%s,%s,%s,%s,%s)'''
+    cursor.execute(query,(username,TravellinMode,TotalDistTravelled,Ac_Tier,Total_Journey_cost))
+    mycon.commit()
+
+#Function to add data in Bus table
+def add_bususer(username,TravellingMode,TotalDistTravelled,Total_Journey_cost):
+    query='''INSERT INTO Bustable(Username,Travelling_mode,Total_Distance_Travelled,Total_Journey_cost) VALUES(%s,%s,%s,%s)'''
+    cursor.execute(query,(username,TravellingMode,TotalDistTravelled,Total_Journey_cost))
+    mycon.commit()
+
+#Function to print the pass table 
+def print_pass_table(cursor):
+    query="SELECT * FROM pass"
+    cursor.execute(query)
+    rows=cursor.fetchall() 
+    print("Complete pass table:")
+    print("Username | Password")
+    print("-------------------------------------------------------------------------------------------------")
+    for row in rows:
+        print(f"{row[0]:<6}|{row[1]<12}")
+#Function to print the railways table
+def print_railways_table(cursor):
+    query="SELECT * FROM Raildata"
+    cursor.execute(query)
+    rows=cursor.fetchall()
+    print("Complete Raildata table:")
+    print("sr no | Username        | Travelling_mode | Total_Distance_Travelled |Ac_Tier  | Total_Journey_cost")
+    print("-------------------------------------------------------------------------------------------------")
+    for row in rows:
+        print(f"{row[0]:<6} | {row[1]:<12}  | {row[2]:<15} | {row[3]:<25} | {row[4]:<10} | {row[5]:<10}")
+#Function to print the bus table
+def print_bus_table(cursor):
+    query="SELECT * FROM Bustable"
+    cursor.execute(query)
+    rows=cursor.fetchall()
+    print("Complete Bus Table:")
+    print("sr no |Username |Travelling_mode|Total_Distance_Travelled|Total_Journey_cost")
+    print("---------------------------------------------------------------------------------------")
+    for row in rows:
+        print(f"{row[0]:<6}|{row[1]:<12}|{row[2]:<15}|{row[3] or ""}|{row[4]:<10}")
 #Defining personal schedule table
 def create_personal_table(cursor):
     query='''CREATE TABLE IF NOT EXISTS personaldata(
@@ -158,46 +214,55 @@ if choice == 1:
     show_button.place(x=370, y=60)
     hide_button=tk.Button(window,image=hide_image,command=hide,relief="flat",activebackground='white',bd=0,background='white',width=30,height=25)
     hide_button.place(x=370,y=60)
-    def check_user_exists(username):
+#FUNCTION TO CHECK THE USER CREDENTIALS GIVEN
+    def check_user_exists(username,password):
         cursor = mycon.cursor()
-        query = "SELECT * FROM pass WHERE Username = %s"
-        cursor.execute(query, (username,))
-        result = cursor.fetchone()  # Fetch one record
+        query = "SELECT Username and Password FROM pass WHERE Username = %s and Password=%s"
+        cursor.execute(query,(username,password))
+        result = cursor.fetchone()
         cursor.close()
         return result is not None  # Returns True if the user exists
-    global attempts
-    attempts=3
+    def admin_user():
+        print("Admin Access Granted")
+        print("What data you want to see")
+        print("For Railways Table press 1")
+        print("For Bus Table press 2")
+        wish=int(input("Enter choice"))
+        if wish==1:
+            print_railways_table(cursor)
+        elif wish==2:
+            print_bus_table(cursor)
+        else:
+            pass
+    global Attempts
+    Attempts=3
     global flag
     flag=False
-
     def access_granted():
-        #A three time counter before exiting the program 
-        global attempts
+        global flag
+        global Attempts
         username = username_entry.get().strip()
         password=password_entry.get().strip()
         if username=="" or password=="":
-            speak("Please enter data")
+            print("Please enter data")
+        elif check_user_exists(username,password):
+           speak("Access Granted")
+           flag=True
+           window.destroy()
+        elif username=="Harsh" and password=="123456789":
+            window.destroy()
+            admin_user()
         else:
-           if check_user_exists(username):
-            if username=="Harsh" and password=="123456789":
-                print("Admin Access Granted")
-                speak("Welcome Admin")
-                admin_user()
-            else:
-               global flag
-               speak("Access Granted")
-               flag=True
-               print("Access Granted")
+           if Attempts>1:
+               Attempts=Attempts-1
+               print(f"tries remaining.{Attempts}")
+               if check_user_exists(username,password):
+                speak("User Exist")
+                flag=True
+                window.destroy()
            else:
-            attempts=attempts-1
-            if attempts>0:
-             print(f"Incorrect username Tries Remaining.{attempts}")
-             print("Try again")
-            else:
-             print("Incorrect username")
-             speak("User doesnt exist")
-             window.destroy()
-               
+               print("exiting the Program,Access denied")
+               window.destroy()
         
     tk.Button(window, text="Check Access", command=access_granted).grid(row=2, columnspan=1, pady=20)
     tk.Button(window,text="Close",command=window.destroy).grid(row=2,columnspan=2,pady=20)
