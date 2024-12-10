@@ -275,8 +275,14 @@ if choice == 1:
         if Mode=="Railways":
             
             print("Welcome to our Rail facility")
+            print()
+            print()
             print("Please use BLOCK LETTERS for futher communication")
+            print()
+            print()
             print("RAIL SERVICE IS AVAILABLE FOR NEW DELHI,MUMBAI,GORAKHPUR")
+            print()
+            print()
             #INITIAL JOURNEY DETAILS
             from datetime import date
             from datetime import timedelta
@@ -314,29 +320,7 @@ if choice == 1:
                 global nopassenger
                 nopassenger=int(input("NO OF PASSENGERS"))
             
-                #CHECK FOR BOOKING
-                global stlo
-                stlo=str(input("Enter Source Station="))
-                while stlo not in ['NEW DELHI','MUMBAI','GORAKHPUR']:
-                    print('INVALID DATA')
-                    stlo=str(input("Enter Source Station="))
-                global enlo
-                enlo=str(input("Enter end station="))
-                while enlo not in ['NEW DELHI','MUMBAI','GORAKHPUR']:
-                    print('INVALID DATA')
-                    enlo=str(input("Enter Source Station="))
-                global clas
-                clas=str(input("Enter class(eg AC2 for AC second tier)"))
-                global stdate
-                STDATE=str(input('ENTER DATE FOR BOOKING(USE FORMAT YYYY-MM-DD)'))
-                stdate=date.fromisoformat(STDATE)
-                while stdate<date.today():
-                    print('INVALID DATE')
-                    STDATE=str(input('ENTER DATE FOR BOOKING(USE FORMAT YYYY-MM-DD)'))
-                    stdate=date.fromisoformat(STDATE)
                 
-                global nopassenger
-                nopassenger=int(input("NO OF PASSENGERS"))
 
             #CHECK FOR BOOKING
             def furtheroption():   
@@ -398,7 +382,8 @@ if choice == 1:
                 print()
                 print()
                 print(datetime.today())
-                print('||--->GORAKHDHAM EXP<---||')
+                print('||||--------------->GORAKHDHAM EXP<---------------||||')
+                print()
                 print('FROM GORAKHPUR JN ---->TO NEW DELHI')
                 print('DEPARTURE ',stdate,'16:35-----ARRIVAL',(stdate+teem),' 05:15')
                 print('JOURNEY DURATION--12HRS 40MIN')
@@ -407,6 +392,7 @@ if choice == 1:
                       'AC3 TICKET COST PER HEAD-Rs.1165')
                 print()
                 print()
+                print('||||----------------------------------------------||||')
             
             #GORAKHDHAM TRAIN DELHI->GKP
             def details_gorakhdham_delhigkp():
@@ -414,7 +400,8 @@ if choice == 1:
                 print()
                 print()
                 print(datetime.today())
-                print('||--->GORAKHDHAM EXP<---||')
+                print('||||--------------->GORAKHDHAM EXP<---------------||||')
+                print()
                 print('FROM NEW DELHI ---->TO GORAKHPUR JN')
                 print('DEPARTURE',stdate,' 21:25-----ARRIVAL',(stdate+teem),' 09:45')
                 print('JOURNEY DURATION--12HRS 20MIN')
@@ -423,6 +410,7 @@ if choice == 1:
                       'AC3 TICKET COST PER HEAD-Rs.1165')
                 print()
                 print()
+                print('||||----------------------------------------------||||')
             
             #GKP LTT SF TRAIN GKP->MUMBAI
             def details_gkpltt_gkpmumbai():
@@ -430,7 +418,8 @@ if choice == 1:
                 print()
                 print()
                 print(datetime.today())
-                print('||--->GKP LTT SF EXP<---||')
+                print('||||--------------->GKP LTT SF EXP<--------------||||')
+                print()
                 print('FROM GORAKHPUR JN ---->TO LOKMANYATILAK T')
                 print('DEPARTURE',stdate,' 22:30-----ARRIVAL',(stdate+teem),' 04:35')
                 print('JOURNEY DURATION--30HRS 05MIN')
@@ -439,13 +428,15 @@ if choice == 1:
                       'AC3 TICKET COST PER HEAD-Rs.1840')
                 print()
                 print()
+                print('||||----------------------------------------------||||')
             #GKP LTT SF TRAIN MUMBAI->GKP
             def details_gkpltt_mumbaigkp():
                 teem=timedelta(days=2)
                 print()
                 print()
                 print(datetime.today())
-                print('||--->GKP LTT SF EXP<---||')
+                print('||||--------------->GKP LTT SF EXP<--------------||||')
+                print()
                 print('FROM LOKMANYATILAK T ---->TO GORAKHPUR JN')
                 print('DEPARTURE',stdate,' 05:23-----ARRIVAL',(stdate+teem),' 11:45')
                 print('JOURNEY DURATION--30HRS 22MIN')
@@ -454,6 +445,7 @@ if choice == 1:
                       'AC3 TICKET COST PER HEAD-Rs.1840')
                 print()
                 print()
+                print('||||---------------------------------------------||||')
             
             #MMCT TEJAS RAJ TRAIN DELHI->MUMBAI
             def details_mmcttejasraj_delhimumbai():
@@ -461,7 +453,8 @@ if choice == 1:
                 print()
                 print()
                 print(datetime.today())
-                print('||--->MMCT TEJAS RAJ<---||')
+                print('||||--------------->MMCT TEJAS RAJ<---------------||||')
+                print()
                 print('FROM NEW DELHI ---->TO LOKMANYATILAK T')
                 print('DEPARTURE',stdate,' 16:55-----ARRIVAL',(stdate+teem),' 08:35')
                 print('JOURNEY DURATION--15HRS 40MIN')
@@ -470,6 +463,7 @@ if choice == 1:
                       'AC3 TICKET COST PER HEAD-Rs.3085')
                 print()
                 print()
+                print('||||---------------------------------------------||||')
             
             #NDLS TEJAS RAJ TRAIN MUMBAI->DELHI
             def details_ndlstejasraj_mumbaidelhi():
@@ -477,7 +471,8 @@ if choice == 1:
                 print()
                 print()
                 print(datetime.today())
-                print('||--->NDLS TEJAS RAJ<---||')
+                print('||||--------------->NDLS TEJAS RAJ<---------------||||')
+                print()
                 print('FROM MUMBAI CENTRAL ---->TO NEW DELHI')
                 print('DEPARTURE',stdate,' 17:00-----ARRIVAL',(stdate+teem),' 08:32')
                 print('JOURNEY DURATION--15HRS 32MIN')
@@ -486,6 +481,7 @@ if choice == 1:
                       'AC3 TICKET COST PER HEAD-Rs.3085')
                 print()
                 print()
+                print('||||---------------------------------------------||||')
             # BOOKING COST
             cost_booking_gorakhdham_ac2=0
             cost_booking_gorakhdham_ac3=0
