@@ -1173,24 +1173,24 @@ if choice == 1:
             create_railways_table(cursor)
             if (stlo=="GORAKHPUR" and enlo=="NEW DELHI") or (stlo=="NEW DELHI" and enlo=="GORAKHPUR"):
                 if clas=='AC2':
-                    add_railuser(username,"Railways",DisGkpdel,clas,cost_booking_gorakhdham_ac2)
+                    add_railuser(username,"Railways",stlo,,enlo,stdate,clas,cost_booking_gorakhdham_ac2)
                 elif clas=='AC3':
-                    add_railuser(username,"Railways",DisGkpdel,clas,cost_booking_gorakhdham_ac3)                   
+                    add_railuser(username,"Railways",stlo,,enlo,stdate,clas,cost_booking_gorakhdham_ac3)                   
             if (stlo=="MUMBAI" and enlo=="GORAKHPUR" and stlo=="GORAKHPUR" or enlo=="MUMBAI"):
                 if clas=='AC2':
-                    add_railuser(username,"Railways",DisGkpmum,clas,cost_booking_gkplttsf_ac2)
+                    add_railuser(username,"Railways",stlo,,enlo,stdate,clas,cost_booking_gkplttsf_ac2)
                 elif clas=='AC3':
-                    add_railuser(username,"Railways",DisGkpmum,clas,cost_booking_gkplttsf_ac3)
+                    add_railuser(username,"Railways",stlo,,enlo,stdate,clas,cost_booking_gkplttsf_ac3)
             if (enlo=="MUMBAI" and stlo=="NEW DELHI"):
                 if clas=='AC2':
-                    add_railuser(username,"Railways",DisDelmum,clas,cost_booking_mmcttejas_ac2)
+                    add_railuser(username,"Railways",stlo,,enlo,stdate,clas,cost_booking_mmcttejas_ac2)
                 elif clas=='AC3':
-                    add_railuser(username,"Railways",DisDelmum,clas,cost_booking_mmcttejas_ac3)
+                    add_railuser(username,"Railways",stlo,,enlo,stdate,clas,cost_booking_mmcttejas_ac3)
             else(stlo=='MUMBAI' and enlo=='NEW DELHI'):
                 if clas=='AC2':
-                    add_railuser(username,"Railways",DisMumdel,clas,cost_booking_ndlstejas_ac2)
+                    add_railuser(username,"Railways",stlo,,enlo,stdate,clas,cost_booking_ndlstejas_ac2)
                 elif clas=='AC3':
-                    add_railuser(username,"Railways",DisMumdel,clas,cost_booking_ndlstejas_ac3)
+                    add_railuser(username,"Railways",stlo,,enlo,stdate,clas,cost_booking_ndlstejas_ac3)
                
         if Mode=="Bus":
             def distane():                              #calculate distance between the source and final location
