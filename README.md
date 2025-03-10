@@ -40,12 +40,11 @@ python main.py
 - Users can input locations, calculate distances, and generate reports.
 - The database stores transport records for easy access and management.
 
-
+ 
 ## Contributors  
-Thanks to all the contributors of this project!  
+- [@Harsh-DDubey](https://github.com/Harsh-DDubey)  
+- [@Kaustubh](https://github.com/Kaus-K)  
 
-## Contributors  
-[View all contributors](https://github.com/Harsh-DDubey/TransportAnalysis/graphs/contributors)
 
 ## Contributing
 Contributions are welcome! Feel free to fork the repository and submit pull requests.
