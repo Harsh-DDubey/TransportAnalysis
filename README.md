@@ -3,6 +3,9 @@
 ## Overview
 This project is a comprehensive **Transport Analysis System** developed using **Python**. It leverages various libraries to analyze transportation data, calculate distances, and provide useful insights for transport management.
 
+🚨 **Heads Up!** 🚨
+> This project is an **unfinished prototype**, a work-in-progress that never quite made it to the finish line.If you're diving into this, expect some **rough edges, missing pieces, and bugs** lurking around. Feel free to **tweak, fix, and improve** it as you see fit—because, well, it's not of much use to me anymore! 
+
 ## Features
 - **Graphical User Interface (GUI)** using Tkinter
 - **Database Integration** with MySQL using pymysql
@@ -40,18 +43,9 @@ python main.py
 - Users can input locations, calculate distances, and generate reports.
 - The database stores transport records for easy access and management.
 
- 
-## Creators
-- [@Harsh-DDubey](https://github.com/Harsh-DDubey)  
-- [@Kaustubh](https://github.com/Kaus-K)  
-
-
 ## Contributing
 Contributions are welcome! Feel free to fork the repository and submit pull requests.
 
 ## License
 This project is licensed under the MIT License.
-
-## Contact
-For any inquiries, reach out via [your.email@example.com](mailto:your.email@example.com).
 
