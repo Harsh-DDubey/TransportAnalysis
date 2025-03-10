@@ -41,7 +41,7 @@ python main.py
 - The database stores transport records for easy access and management.
 
  
-## Contributors  
+## Creators
 - [@Harsh-DDubey](https://github.com/Harsh-DDubey)  
 - [@Kaustubh](https://github.com/Kaus-K)  
 
