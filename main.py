@@ -21,7 +21,7 @@ def get_db_connection():
     return pymysql.connect(
         host='localhost',
         user='sammy',
-        password='mukund',
+        password='',
         database='mydatabase'
     )
 
