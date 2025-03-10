@@ -1,0 +1,5 @@
+tkinter
+pymysql
+pyttsx3
+Pillow
+geopy
