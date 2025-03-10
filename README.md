@@ -44,9 +44,8 @@ python main.py
 ## Contributors  
 Thanks to all the contributors of this project!  
 
-<a href="https://github.com/Harsh-DDubey/TransportAnalysis/graphs/contributors">  
-  <img src="https://contrib.rocks/image?repo=Harsh-DDubey/TransportAnalysis" />  
-</a>  
+## Contributors  
+[View all contributors](https://github.com/Harsh-DDubey/TransportAnalysis/graphs/contributors)
 
 ## Contributing
 Contributions are welcome! Feel free to fork the repository and submit pull requests.
