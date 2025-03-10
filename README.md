@@ -13,6 +13,12 @@ This project is a comprehensive **Transport Analysis System** developed using **
 - **Image Handling** using Pillow (PIL)
 - **Geolocation and Distance Calculation** using geopy
 
+<p align="center">
+    <img src="https://img.shields.io/github/stars/Harsh-DDubey/TransportAnalysis?style=social" />
+    <img src="https://img.shields.io/github/forks/Harsh-DDubey/TransportAnalysis?style=social" />
+    <img src="https://img.shields.io/github/issues/Harsh-DDubey/TransportAnalysis" />
+</p>
+
 ## Technologies Used
 - **Programming Language**: Python
 - **Libraries**: tkinter, pymysql, pyttsx3, Pillow, geopy
